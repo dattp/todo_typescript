@@ -1,0 +1,33 @@
+{
+  "name": "todo_typescript",
+  "version": "1.0.0",
+  "description": "project todo code typescript",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/dist/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prod": "npm run build && npm run start"
+  },
+  "author": "DatPT",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.27",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.0",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.7",
+    "@types/mongoose": "^5.7.34",
+    "@types/morgan": "^1.9.1",
+    "@types/multer": "^1.4.3",
+    "@types/node": "^14.0.27",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  }
+}
