@@ -6,14 +6,13 @@ jobs:
     docker:
       # specify the version you desire here
       # documented at https://circleci.com/docs/2.0/circleci-images/
+      # sử dụng môi trường chạy nodejs thông quan docker
       - image: circleci/node:12.13.0
-      - image: circleci/redis:6.0.6-alpine
 
     working_directory: ~/todo-typescript
 
     steps:
       - checkout
-      # Download and cache dependencies
       # khôi phục lại folder chứa package (v1-dependencies) dựa vào file (package-lock.json)
       - restore_cache:
           keys:
@@ -27,28 +26,27 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package-lock.json" }}
 
-      # run tests!
       - run: npm run test
 
-  # deploy_development:
-  #   machine:
-  #     enabled: true
-  #   steps:
-  #     - add_ssh_keys:
-  #         fingerprints:
-  #           - "76:8d:4d:4c:2c:db:3f:0d:a6:6e:5a:42:f4:dc:c5:23"
-  #     - run: 
-  #         name: pull code and start api_services
-  #         command: ssh -oStrictHostKeyChecking=no root@42.112.27.32 -p 22287 "cd /home/enetviet_data_synchronization; git pull origin master; npm run build-npm; npm run start-pro"
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "76:8d:4d:4c:2c:db:3f:0d:a6:6e:5a:42:f4:dc:c5:23"
+      - run:
+          name: pull code and start api_services
+          command: ssh -oStrictHostKeyChecking=no root@42.112.27.32 -p 22287 "cd /home/todo_typescript; git pull origin master; npm run install-npm; npm run dev"
 
-# workflows:
-#   my-flow:
-#       jobs:
-#         - build-test
-#         - deploy_development:
-#             requires:
-#               - build-test
-#             filters:
-#               branches:
-#                 only:
-#                   - master
+workflows:
+  my-flow:
+      jobs:
+        - build
+        - deploy:
+            requires:
+              - build
+            filters:
+              branches:
+                only:
+                  - master
