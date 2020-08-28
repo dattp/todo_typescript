@@ -8,7 +8,7 @@
     "test": "jest --coverage --verbose --setupFiles dotenv/config --detectOpenHandles",
     "build": "tsc",
     "prod": "npm run build && npm run start",
-    "dev": "nodemon",
+    "dev": "pm2 start nodemon",
     "install-npm": "npm install"
   },
   "author": "DatPT",
