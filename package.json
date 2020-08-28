@@ -30,6 +30,7 @@
     "@types/multer": "^1.4.3",
     "@types/node": "^14.0.27",
     "jest": "^26.4.2",
+    "node-mocks-http": "^1.9.0",
     "nodemon": "^2.0.4",
     "ts-jest": "^26.3.0",
     "ts-node": "^8.10.2",

@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import ResponseFormat from '../entities/response.entity';
+import ResponseFormat from '../types/response.type';
 import StatusCode from '../constants/statuscode.constant';
 
 class ResponseSuccess {

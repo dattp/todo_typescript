@@ -1,8 +1,13 @@
 import mongoose from 'mongoose';
 
+import ITodo from '../types/interfaces/i.todo.type';
+
 const TodoSchema = new mongoose.Schema(
   {
-    title: String,
+    title: {
+      type: String,
+      unique: true
+    },
     description: String,
     status: { type: Number, default: 0 }
   },
@@ -16,6 +21,6 @@ TodoSchema.set('toJSON', {
   }
 });
 
-const Todo = mongoose.model('Todos', TodoSchema, 'todos')
+const Todo = mongoose.model<ITodo>('Todos', TodoSchema, 'todos')
 
 export default Todo

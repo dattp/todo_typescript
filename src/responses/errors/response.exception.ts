@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import ResponseFormat from '../../entities/response.entity';
+import ResponseFormat from '../../types/response.type';
 
 class ResponseException {
 

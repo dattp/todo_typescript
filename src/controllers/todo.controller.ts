@@ -4,9 +4,10 @@ import ITodoService from '../services/interfaces/i.todo.service'
 import ITodoController from './interfaces/i.todo.controller'
 import ErrorNotFound from '../responses/errors/notfound.exception'
 import ErrorMissingParam from '../responses/errors/missingparam.exception'
-import { Todo } from '../entities/todo.entity'
+import Todo from '../models/todo.model'
 import ServerError from '../responses/errors/servererror.exception'
 import ResponseSuccess from '../responses/success.response'
+import ITodo from '../types/interfaces/i.todo.type'
 
 class TodoController implements ITodoController {
   public static todoService: ITodoService
@@ -47,8 +48,10 @@ class TodoController implements ITodoController {
       return new ErrorMissingParam('title missing!', res)
     }
     try {
-      const todo = new Todo(4, title, description)
-      const resultInsert = await TodoController.todoService.insert(todo.getTodo)
+      const todo: ITodo = new Todo({
+
+      })
+      const resultInsert = await TodoController.todoService.insert({ title, description })
       return new ResponseSuccess(resultInsert, res)
     } catch (error) {
       return new ServerError(error.message, res)
