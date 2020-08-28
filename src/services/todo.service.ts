@@ -27,28 +27,16 @@ const todos = [
 class TodoService implements ITodoService {
 
   public async getListTodo(): Promise<ITodo[]> {
-    try {
-      return todos
-    } catch (error) {
-      throw new Error(error.message)
-    }
+    return todos
   }
   public async getTodo(id: number): Promise<ITodo | null> {
-    try {
-      const todo = todos.find(item => item.id === id) || null
-      return todo
-    } catch (error) {
-      throw new Error(error.message)
-    }
+    const todo = todos.find(item => item.id === id) || null
+    return todo
   }
 
   public async insert(todo: ITodo): Promise<ITodo | null> {
-    try {
-      todos.push(todo)
-      return todo
-    } catch (error) {
-      throw new Error(error.message)
-    }
+    todos.push(todo)
+    return todo
   }
 
 }

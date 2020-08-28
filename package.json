@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./src/dist/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage --verbose --setupFiles dotenv/config --detectOpenHandles",
     "build": "tsc",
-    "prod": "npm run build && npm run start"
+    "prod": "npm run build && npm run start",
+    "dev": "nodemon"
   },
   "author": "DatPT",
   "license": "MIT",
@@ -22,11 +23,14 @@
     "@types/body-parser": "^1.19.0",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.7",
+    "@types/jest": "^26.0.10",
     "@types/mongoose": "^5.7.34",
     "@types/morgan": "^1.9.1",
     "@types/multer": "^1.4.3",
     "@types/node": "^14.0.27",
+    "jest": "^26.4.2",
     "nodemon": "^2.0.4",
+    "ts-jest": "^26.3.0",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
   }
