@@ -22,40 +22,6 @@ class Todo implements ITodo {
       status: this.status
     }
   }
-
-
-  public set setTitle(title: string) {
-    this.title = title;
-  }
-
-
-  public set setDescription(v: string) {
-    this.description = v;
-  }
-
-
-  public set setStatus(v: number) {
-    this.status = v;
-  }
-
-
-  public get getTitle(): string {
-    return this.title
-  }
-
-
-  public get getDescription(): string {
-    return this.description
-  }
-
-
-  public get getStatus(): number {
-    return this.status
-  }
-
-  public toJSON(todo: Todo): String {
-    return JSON.stringify(todo)
-  }
 }
 
 export { Todo }
