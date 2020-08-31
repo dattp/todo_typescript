@@ -6,7 +6,7 @@ const TodoSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      unique: true
+      // unique: true
     },
     description: String,
     status: { type: Number, default: 0 }

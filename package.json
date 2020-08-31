@@ -4,8 +4,8 @@
   "description": "project todo code typescript",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/dist/server.js",
-    "test": "jest --coverage --verbose --setupFiles dotenv/config --detectOpenHandles",
+    "start": "nodemon dist/server.js",
+    "test": "jest --coverage --verbose --setupFiles dotenv/config --detectOpenHandles --forceExit",
     "build": "tsc",
     "prod": "npm run build && npm run start",
     "dev": "pm2 start nodemon",
