@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import morgan from 'morgan'
+const promMid = require('express-prometheus-middleware')
 
 import { TodoRoute } from './routes/todo.route'
 import { TodoService } from './services/todo.service'
@@ -18,9 +19,10 @@ class App {
     this._setConfig()
     // this._initMiddlewaresError()
     // this._setMongoConfig()
+    this._setMonitor()
     this._loadRoute()
-
   }
+  //lưu ý là phải để this._setMonitor() trên _loadRoute()
 
   private _setConfig() {
     this.app.use(bodyParser.json({ limit: '50mb' }))
@@ -57,6 +59,14 @@ class App {
       console.log('connected to mongo');
 
     }).catch(error => console.log(error))
+  }
+
+  private _setMonitor() {
+    this.app.use(promMid({
+      metricsPath: '/metrics',
+      collectDefaultMetrics: true,
+      requestDurationBuckets: [0.1, 0.5, 1, 1.5],
+    }))
   }
 }
 

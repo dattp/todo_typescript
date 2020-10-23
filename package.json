@@ -2,7 +2,7 @@
   "name": "todo_typescript",
   "version": "1.0.0",
   "description": "project todo code typescript",
-  "main": "index.js",
+  "main": "index",
   "scripts": {
     "start": "nodemon ./src/dist/server.js",
     "test": "jest --coverage --verbose --setupFiles dotenv/config --detectOpenHandles",
@@ -17,8 +17,10 @@
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-prometheus-middleware": "^0.9.6",
     "mongoose": "^5.9.27",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "prom-client": "^12.0.0"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.0",
