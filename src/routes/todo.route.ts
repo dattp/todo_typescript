@@ -12,9 +12,9 @@ class TodoRoute {
   }
 
   private routes() {
-    this.app.get('/api/gettodos', this.todoController.getTodos)
-    this.app.get('/api/gettodo/:id', this.todoController.getTodoDetail)
-    this.app.post('/api/inserttodo', this.todoController.insertTodo)
+    this.app.get('/api/todos', this.todoController.getTodos)
+    this.app.get('/api/todo/:id', this.todoController.getTodoDetail)
+    this.app.post('/api/todo', this.todoController.insertTodo)
   }
 }
 
